@@ -73,7 +73,6 @@ function WebSocket:parseMessage(message)
 
 	local opcode = message.opcode
 	local payload = message.payload
-
 	if opcode == TEXT then
 
 		return decode(payload, 1, null), payload
