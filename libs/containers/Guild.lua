@@ -60,6 +60,7 @@ function Guild:_makeAvailable(data)
 
 	if not data.channels then return end -- incomplete guild
 
+
 	local states = self._voice_states
 	for _, state in ipairs(data.voice_states) do
 		states[state.user_id] = state
@@ -71,12 +72,17 @@ function Guild:_makeAvailable(data)
 
 	for _, channel in ipairs(data.channels) do
 		local t = channel.type
-		if t == channelType.text or t == channelType.news then
+		if t == channelType.text or t == channelType.news or t == channelType.thread then
 			text_channels:_insert(channel)
 		elseif t == channelType.voice then
 			voice_channels:_insert(channel)
 		elseif t == channelType.category then
 			categories:_insert(channel)
+		end
+	end
+	if data.threads then
+		for _, thread in pairs(data.threads) do
+			text_channels:_insert(thread)
 		end
 	end
 

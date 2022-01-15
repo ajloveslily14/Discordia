@@ -52,6 +52,7 @@ enums.channelType = enum {
 	group    = 3,
 	category = 4,
 	news     = 5,
+	thread   = 11,
 }
 
 enums.webhookType = enum {

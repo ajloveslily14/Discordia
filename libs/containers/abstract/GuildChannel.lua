@@ -74,7 +74,7 @@ local function getSortedChannels(self)
 
 	local channels
 	local t = self._type
-	if t == channelType.text or t == channelType.news then
+	if t == channelType.text or t == channelType.news or t == channelType.thread then
 		channels = self._parent._text_channels
 	elseif t == channelType.voice then
 		channels = self._parent._voice_channels
